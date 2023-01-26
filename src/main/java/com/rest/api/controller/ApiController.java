@@ -9,15 +9,16 @@ import com.rest.api.payload.ReceiveOrderRequest;
 import com.rest.api.payload.ReceiveOrderResponse;
 import com.rest.api.service.ApiService;
 
-import lombok.RequiredArgsConstructor;
-
 @RestController
 @RequestMapping(value = "/api")
-@RequiredArgsConstructor
 @CrossOrigin("*")
 public class ApiController {
 
     private final ApiService service;
+
+    public ApiController(ApiService service) {
+        this.service = service;
+    }
 
     @PostMapping("/order")
     public ResponseEntity<ReceiveOrderResponse> receiveOrder(@RequestBody ReceiveOrderRequest request) throws BadRequestException {

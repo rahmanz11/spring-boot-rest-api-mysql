@@ -1,6 +1,9 @@
---mysql -u root -p
+-- login as root user
+-- mysql -u root -p
 create database api;
 grant all privileges on api.* to 'api'@'%';
+
+-- login as api user
 --mysql -u api -p
 use api;
 create table item_inventory(
@@ -24,4 +27,3 @@ create table orders(
 
 INSERT INTO item_inventory(item_number, price_per_unit, available_units, weight_per_unit_in_kg) VALUES (1234, 12, 10, 1);
 INSERT INTO item_inventory(item_number, price_per_unit, available_units, weight_per_unit_in_kg) VALUES (5678, 10, 6, 2);
-

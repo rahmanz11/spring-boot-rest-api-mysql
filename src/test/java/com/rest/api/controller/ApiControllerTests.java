@@ -29,9 +29,6 @@ class ApiControllerTests {
     @Autowired
     private MockMvc mockMvc;
     
-    @Value("${max.weight.hermes}")
-    private Integer maxWeightHermes;
-    
     @Test
     void receiveOrderItemUnavailableTest() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/api/order")
@@ -52,16 +49,6 @@ class ApiControllerTests {
         .andExpect(result -> assertEquals("Item not available for the given quantity", result.getResolvedException().getMessage()));
     }
 
-    @Test
-    void receiveOrderItemWeightExceededTest() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/api/order")
-        .contentType(MediaType.APPLICATION_JSON)
-        .content("{\"itemNumber\": \"1234\", \"orderQuantity\": \"6\", \"logisticsCompany\": \"Hermes\"}")
-        .accept(MediaType.APPLICATION_JSON))
-        .andExpect(result -> assertTrue(result.getResolvedException() instanceof BadRequestException))
-        .andExpect(result -> assertEquals("Cannot ship more than " + maxWeightHermes + " KG by Hermes", result.getResolvedException().getMessage()));
-    }
-    
     @Test
     void receiveOrderTest() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/api/order")

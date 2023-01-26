@@ -13,9 +13,6 @@ import com.rest.api.repository.OrderRepository;
 
 import java.util.Optional;
 
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
 @Service
 public class ApiService {
 
@@ -33,6 +30,12 @@ public class ApiService {
 
     private final ItemInventoryRepository itemInventoryRepository;
     private final OrderRepository orderRepository;
+
+    public ApiService(ItemInventoryRepository itemInventoryRepository, 
+                        OrderRepository orderRepository) {
+        this.itemInventoryRepository = itemInventoryRepository;
+        this.orderRepository = orderRepository;
+    }
 
     public GetAvailableItemCountResponse getItemsAvailableUnits(Integer number) throws Exception {
         // Find the item with the given item number

@@ -2,19 +2,8 @@ package com.rest.api.model;
 
 import javax.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
 @Entity
 @Table(name = "item_inventory")
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class ItemInventory {
 
     @Id
@@ -24,4 +13,47 @@ public class ItemInventory {
     private Integer pricePerUnit;
     private Integer availableUnits;
     private Integer weightPerUnitInKg;
+
+    public ItemInventory() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getItemNumber() {
+        return itemNumber;
+    }
+
+    public void setItemNumber(Integer itemNumber) {
+        this.itemNumber = itemNumber;
+    }
+
+    public Integer getPricePerUnit() {
+        return pricePerUnit;
+    }
+
+    public void setPricePerUnit(Integer pricePerUnit) {
+        this.pricePerUnit = pricePerUnit;
+    }
+
+    public Integer getAvailableUnits() {
+        return availableUnits;
+    }
+
+    public void setAvailableUnits(Integer availableUnits) {
+        this.availableUnits = availableUnits;
+    }
+
+    public Integer getWeightPerUnitInKg() {
+        return weightPerUnitInKg;
+    }
+
+    public void setWeightPerUnitInKg(Integer weightPerUnitInKg) {
+        this.weightPerUnitInKg = weightPerUnitInKg;
+    }
+    
 }
